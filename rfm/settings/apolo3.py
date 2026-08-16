@@ -1,3 +1,9 @@
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from common import storage, logging_config
+
 site_configuration = {
     'systems': [
         {
@@ -20,6 +26,7 @@ site_configuration = {
                         'num_cpus_per_core': 1,
                     },
                     'extras': {'cn_memory': 503},
+                    'environs': ['intel', 'gnu-openmpi'],
                 },
                 {
                     'name': 'longjobs',
@@ -35,6 +42,7 @@ site_configuration = {
                         'num_cpus_per_core': 1,
                     },
                     'extras': {'cn_memory': 377},
+                    'environs': ['intel', 'gnu-openmpi', 'gnu'],
                 },
                 {
                     'name': 'accel',
@@ -51,8 +59,34 @@ site_configuration = {
                     },
                     'devices': [{'type': 'gpu', 'num_devices': 2}],
                     'extras': {'cn_memory': 251, 'min_gpus_per_node': 1},
-                },                        
+                    'environs': ['intel', 'gnu-openmpi'],
+                    'features': ['gpu'],
+                },
             ]
         }
-    ]
+    ],
+    'environments': [
+        {
+            'name': 'gnu',
+            'cc': 'gcc',
+            'cxx': 'g++',
+            'ftn': 'gfortran',
+        },
+        {
+            'name': 'gnu-openmpi',
+            'cc': 'mpicc',
+            'cxx': 'mpicxx',
+            'ftn': 'mpif90',
+            'modules': ['gnu14/14.2.0', 'openmpi5/5.0.7'],
+            'features': ['mpi'],
+        },
+        {
+            'name': 'intel',
+            'cc': 'icc',
+            'cxx': 'icpc',
+            'ftn': 'ifort',
+        },
+    ],
+    'storage': storage,
+    'logging': logging_config,
 }

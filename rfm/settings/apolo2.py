@@ -1,3 +1,9 @@
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from common import storage, logging_config
+
 site_configuration = {
     'systems': [
         {
@@ -24,7 +30,7 @@ site_configuration = {
                 {
                     'name': 'longjobs',
                     'descr': 'Standard CPU Nodes',
-                    'access': ['--partition=longjobs', '--exclude=compute-0-35,compute-0-38'],
+                    'access': ['--partition=longjobs'],
                     'scheduler': 'slurm',
                     'launcher': 'srun',
                     'max_jobs': 10,
@@ -35,6 +41,7 @@ site_configuration = {
                         'num_cpus_per_core': 1,
                     },
                     'extras': {'cn_memory': 62},
+                    'environs': ['gnu'],
                 },
                 {
                     'name': 'accel',
@@ -83,22 +90,17 @@ site_configuration = {
                     },
                     'extras': {'cn_memory': 62},
                 },
-                {
-                    'name': 'longjobs-smt',
-                    'descr': 'Long-running jobs, SMT/hyperthreaded nodes',
-                    'access': ['--partition=longjobs', '--nodelist=compute-0-35,compute-0-38'],
-                    'scheduler': 'slurm',
-                    'launcher': 'srun',
-                    'max_jobs': 10,
-                    'processor': {
-                        'num_cpus': 64,
-                        'num_cpus_per_socket': 32,
-                        'num_sockets': 2,
-                        'num_cpus_per_core': 2,
-                    },
-                    'extras': {'cn_memory': 62},
-                },
             ]
         }
-    ]
+    ],
+    'environments': [
+        {
+            'name': 'gnu',
+            'cc': 'gcc',
+            'cxx': 'g++',
+            'ftn': 'gfortran',
+        },
+    ],
+    'storage': storage,
+    'logging': logging_config,
 }
