@@ -1,0 +1,55 @@
+# ---- Python bytecode/cache ----
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ---- Packaging/build ----
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# ---- Test/tool caches ----
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+
+# ---- Virtual environments ----
+.venv/
+venv/
+env/
+
+# ---- Editors/OS ----
+.vscode/
+.claude/
+.idea/
+*.swp
+*~
+.DS_Store
+
+# ---- ReFrame runtime outputs ----
+reframe.log
+output/
+stage/
+reports/
+perflogs/
+slurm-*.out
+reframe.out
+*.log
+
+# ---- Project local runtime state ----
+data/runs.db
+data/artifacts/*
+!data/artifacts/.gitkeep
+
+# ---- Secrets / local config ----
+reframe/suites/zabbix_sender.conf
+
+# ---- Thresholds ----
+reframe/references/thresholds.json
