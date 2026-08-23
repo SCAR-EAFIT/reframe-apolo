@@ -17,7 +17,7 @@ site_configuration = {
                     'descr': 'High Memory Nodes',
                     'access': ['--partition=bigmem'],
                     'scheduler': 'slurm',
-                    'launcher': 'srun',
+                    'launcher': 'mpirun',
                     'max_jobs': 10,
                     'processor': {
                         'num_cpus': 64,
@@ -33,7 +33,7 @@ site_configuration = {
                     'descr': 'Standard CPU Nodes',
                     'access': ['--partition=longjobs'],
                     'scheduler': 'slurm',
-                    'launcher': 'srun',
+                    'launcher': 'mpirun',
                     'max_jobs': 10,
                     'processor': {
                         'num_cpus': 64,

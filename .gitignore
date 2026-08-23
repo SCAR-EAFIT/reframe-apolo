@@ -55,4 +55,4 @@ reframe/suites/zabbix_sender.conf
 reframe/references/thresholds.json
 
 # ---- Binary files ----
-reframe/reframe-apolo/rfm/bin/*
+rfm/bin/
