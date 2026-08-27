@@ -26,6 +26,7 @@ site_configuration = {
                         'num_cpus_per_core': 1,
                     },
                     'extras': {'cn_memory': 377},
+                    'environs': ['gnu'],
                 },
                 {
                     'name': 'longjobs',
@@ -58,6 +59,7 @@ site_configuration = {
                     },
                     'devices': [{'type': 'gpu', 'num_devices': 4}],
                     'extras': {'cn_memory': 62, 'min_gpus_per_node': 1},
+                    'environs': ['gnu'],
                 },
                 {
                     'name': 'accel-2',
@@ -74,6 +76,7 @@ site_configuration = {
                     },
                     'devices': [{'type': 'gpu', 'num_devices': 3}],
                     'extras': {'cn_memory': 125},
+                    'environs': ['gnu'],
                 },
                 {
                     'name': 'learning',
@@ -89,6 +92,7 @@ site_configuration = {
                         'num_cpus_per_core': 1,
                     },
                     'extras': {'cn_memory': 62},
+                    'environs': ['gnu'],
                 },
             ]
         }
